@@ -1,0 +1,63 @@
+.menuContainer {
+    @apply relative;
+}
+
+.menuButton {
+    @apply p-2 rounded-full bg-primary shadow hover:bg-primary2-hover;
+}
+
+.menuButton.dark {
+    @apply bg-primary hover:bg-primary2-hover;
+}
+
+.menuIcon {
+    @apply w-6 h-6 text-white;
+}
+
+.menuDropdown {
+    @apply absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg border border-primary;
+}
+
+.menuDropdown.dark {
+    @apply bg-gray-800 border-primary;
+}
+
+.menuContent {
+    @apply p-4;
+}
+
+.menuTitle {
+    @apply text-sm font-semibold text-primary;
+}
+
+.menuTitle.dark {
+    @apply text-primary;
+}
+
+.themeContainer {
+    @apply flex items-center mt-2;
+}
+
+.themeLabel {
+    @apply text-gray-600;
+}
+
+.themeLabel.dark {
+    @apply text-gray-400;
+}
+
+.themeSwitchContainer {
+    @apply relative mx-2 cursor-pointer;
+}
+
+.logoutButton {
+    @apply w-full mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md transition-colors duration-200;
+}
+
+.divider {
+    @apply border-t border-gray-200 my-3;
+}
+
+.divider.dark {
+    @apply border-gray-600;
+}

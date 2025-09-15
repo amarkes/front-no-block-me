@@ -1,0 +1,94 @@
+.registerContainer {
+  @apply flex flex-1 items-center justify-center;
+}
+
+.registerCard {
+  @apply md:w-1/2 p-8 rounded-lg shadow-lg border border-primary;;
+}
+
+.registerCardContainer {
+  @apply md:flex md:flex-row flex-col lg:m-0 m-4 overflow-hidden md:w-3/4 md:max-w-6xl;
+}
+
+
+.headerText {
+  @apply text-center;
+}
+
+.title {
+  @apply md:text-3xl text-2xl font-bold mb-6 text-center;
+}
+
+.subtitle {
+  @apply mt-2 text-sm text-white/80;
+}
+
+.form {
+  @apply mt-8 space-y-6;
+}
+
+.inputGroup {
+  @apply rounded-md shadow-sm;
+}
+
+.inputWrapper {
+  @apply relative mb-4;
+}
+
+.icon {
+  @apply absolute left-3 top-3 text-gray-400;
+}
+
+.input {
+  @apply w-full px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500;
+}
+.checkbox {
+  @apply mr-1
+}
+
+.submitButton {
+  @apply w-full py-2 bg-purple-600 rounded-lg text-lg font-bold hover:bg-purple-700 text-white;
+}
+
+
+.footerText {
+  @apply text-center mt-4;
+}
+
+.link {
+  @apply font-medium text-purple-300 hover:text-purple-400;
+}
+
+.loginIllustration {
+  @apply md:w-1/2 md:mt-0 mt-4 m-4 flex flex-col items-center justify-center;
+}
+
+.illustrationTitle {
+  @apply text-left text-2xl font-bold text-purple-500 mb-4 ml-4;
+}
+
+.illustrationText {
+  @apply text-gray-400 mb-6 ml-4;
+}
+
+.illustrationImage {
+  @apply w-2/3 h-auto;
+}
+
+.divider {
+  @apply flex items-center mb-4;
+}
+
+.line {
+  @apply flex-grow border-t border-gray-600;
+}
+
+.text {
+  @apply mx-4 text-gray-400;
+}
+.modalContent {
+  @apply overflow-y-scroll overflow-x-hidden max-h-[70vh]
+}
+.textInfo {
+  @apply text-[12px] text-[#6b6b6b];
+}

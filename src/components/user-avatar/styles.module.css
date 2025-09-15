@@ -1,0 +1,19 @@
+.userContainer {
+    @apply flex items-center space-x-2;
+}
+
+.avatarImage {
+    @apply w-8 h-8 rounded-full object-cover;
+}
+
+.avatarPlaceholder {
+    @apply w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold;
+}
+
+.displayName {
+    @apply text-gray-700 font-medium;
+}
+
+.displayName.dark {
+    @apply text-gray-300;
+}
