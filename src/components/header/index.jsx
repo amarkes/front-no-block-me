@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
 import MenuComponent from '@/components/menu/index';
@@ -6,7 +6,7 @@ import UserAvatar from '@/components/user-avatar/index';
 import AuthContext from '@/context/AuthContext';
 
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ onMenuClick }) => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -32,6 +32,14 @@ const HeaderComponent = () => {
   return (
     <div className={`${styles.headerWrapper} ${isDarkMode ? styles.dark : ''}`}>
       <header className={styles.headerContainer}>
+        {user && (
+          <button
+            onClick={onMenuClick}
+            className={styles.menuButton}
+          >
+            ☰
+          </button>
+        )}
         <div
           tabIndex={0}
           onClick={() => navigate('/')}

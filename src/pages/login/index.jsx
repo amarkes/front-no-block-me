@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
 import { useState, useContext } from 'react';
 import AuthContext from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -9,12 +7,13 @@ import styles from './styles.module.css';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(false);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    login(email, password, remember);
   };
 
   return (
@@ -58,7 +57,12 @@ const LoginPage = () => {
             </div>
             <div className={styles.formFooter}>
               <label className={[styles.remember, `dark:text-white`].join(' ')}>
-                <input type="checkbox" className={styles.checkbox} />
+                <input 
+                  type="checkbox" 
+                  className={styles.checkbox}
+                  checked={remember}
+                  onChange={(e) => setRemember(e.target.checked)}
+                />
                 Remember
               </label>
               <button onClick={() => navigate('/forgot-password')} className={styles.forgotPassword}>Forgot Password</button>

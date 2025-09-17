@@ -1,21 +1,22 @@
-import React, { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { AnimatePresence } from "framer-motion";
 import LoginPage from '@/pages/login/index';
 import RegisterPage from '@/pages/register/index';
 import ForgotPasswordPage from '@/pages/forgot/index';
-
-import ProfilePage from './pages/profile';
-
-
 import HomePage from '@/pages/home/index';
 import AuthContext, { AuthProvider } from '@/context/AuthContext';
 import { AlertDialogProvider } from '@/components/alert/AlertDialogContext';
+import Sidebar from './components/sidebar';
+import DashboardPage from './pages/dashboard';
+import CategoriesPage from './pages/categories';
+import ReportsPage from './pages/reports';
 import './index.css';
 
 function App() {
-  const { user, loading } = useContext(AuthContext); // Adiciona o loading
+  const { user, loading } = useContext(AuthContext);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Verifica se está carregando os dados do usuário
   if (loading) {
@@ -51,26 +52,38 @@ function App() {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes>
-        {/* Rotas protegidas */}
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      {user && (
+        <Sidebar 
+          isOpen={sidebarOpen} 
+          onClose={() => setSidebarOpen(false)} 
+        />
+      )}
 
-        <Route path="/app" element={<ProtectedRoute element={<HomePage />} />} />
-        <Route path="/profile" element={<ProtectedRoute element={<ProfilePage />} />} />
+      {/* Conteúdo principal */}
+      <div className={`flex-1 ${user ? 'lg:ml-80' : ''} transition-all duration-300`}>
+        <AnimatePresence mode="wait">
+          <Routes>
+            {/* Rotas protegidas */}
+            <Route path="/app" element={<ProtectedRoute element={<HomePage />} />} />
+            <Route path="/home" element={<ProtectedRoute element={<DashboardPage onMenuClick={() => setSidebarOpen(true)} />} />} />
+            <Route path="/categories" element={<ProtectedRoute element={<CategoriesPage onMenuClick={() => setSidebarOpen(true)} />} />} />
+            <Route path="/reports" element={<ProtectedRoute element={<ReportsPage onMenuClick={() => setSidebarOpen(true)} />} />} />
 
+            {/* Rotas públicas */}
+            <Route path="/" element={<PublicRoute element={<HomePage />} />}>
+              <Route path="login" element={<PublicRoute element={<LoginPage />} />} />
+              <Route path="register" element={<PublicRoute element={<RegisterPage />} />} />
+              <Route path="forgot-password" element={<PublicRoute element={<ForgotPasswordPage />} />} />
+            </Route>
 
-        {/* Rotas públicas */}
-        <Route path="/" element={<PublicRoute element={<HomePage />} />}>
-          <Route path="login" element={<PublicRoute element={<LoginPage />} />} />
-          <Route path="register" element={<PublicRoute element={<RegisterPage />} />} />
-          <Route path="forgot-password" element={<PublicRoute element={<ForgotPasswordPage />} />} />
-        </Route>
-
-
-        {/* Rota para capturar qualquer rota inválida */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </AnimatePresence>
+            {/* Rota para capturar qualquer rota inválida */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AnimatePresence>
+      </div>
+    </div>
   );
 }
 

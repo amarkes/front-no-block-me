@@ -18,17 +18,32 @@ export const AuthProvider = ({ children }) => {
 
   // Verifica o token e carrega os dados do usuário apenas se ele não estiver logado
   useEffect(() => {
-    const token = store.get(TokenUser);
+    // Verifica primeiro no localStorage, depois no sessionStorage
+    let token = store.get(TokenUser);
+    
+    if (!token) {
+      // Se não encontrou no localStorage, verifica no sessionStorage
+      const sessionToken = sessionStorage.getItem(TokenUser);
+      if (sessionToken) {
+        try {
+          token = JSON.parse(sessionToken);
+        } catch (error) {
+          sessionStorage.removeItem(TokenUser);
+        }
+      }
+    }
 
     // Só faz a requisição se o usuário ainda não estiver no estado
     if (token && token?.token && !user) {
       api.get('/auth/me')
         .then(response => {
           setUser(response?.data?.profile);
-          navigate('/profile');
+          navigate('/home');
         })
         .catch(() => {
+          // Remove token de ambos os storages em caso de erro
           store.remove(TokenUser);
+          sessionStorage.removeItem(TokenUser);
           setUser(null);
           navigate('/login');
         })
@@ -40,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []); // Adiciona 'user' como dependência
 
-  const login = async (email, password) => {
+  const login = async (email, password, remember = false) => {
     const loginPromise = api.post('/auth/login', {
       email: email,
       password: password,
@@ -50,9 +65,18 @@ export const AuthProvider = ({ children }) => {
       pending: 'Fazendo login...',
       success: {
         render({ data }) {
-          store.set(TokenUser, { token: data?.data?.access_token });
+          const tokenData = { token: data?.data?.access_token };
+          
+          if (remember) {
+            // Salva no localStorage (persistente)
+            store.set(TokenUser, tokenData);
+          } else {
+            // Salva no sessionStorage (temporário - perde ao fechar aba)
+            sessionStorage.setItem(TokenUser, JSON.stringify(tokenData));
+          }
+          
           setUser(data?.data?.profile);
-          navigate('/profile');
+          navigate('/home');
           return 'Login realizado com sucesso!';
         },
         autoClose: 3000
@@ -120,17 +144,20 @@ export const AuthProvider = ({ children }) => {
       pending: 'Fazendo logout...',
       success: {
         render() {
+          // Limpa ambos os storages
           store.clearAll();
+          sessionStorage.removeItem(TokenUser);
           setUser(null);
           navigate('/');
           return 'Logout realizado com sucesso!';
         },
-        autoClose: 10000
+        autoClose: 3000
       },
       error: {
         render() {
           // Mesmo se der erro na API, faz logout local
           store.clearAll();
+          sessionStorage.removeItem(TokenUser);
           setUser(null);
           navigate('/');
           return 'Logout realizado (erro na API)';

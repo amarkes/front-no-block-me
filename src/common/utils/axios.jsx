@@ -16,7 +16,22 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(config => {
-  const token = store.get(TokenUser);
+  // Verifica primeiro no localStorage, depois no sessionStorage
+  let token = store.get(TokenUser);
+  
+  if (!token) {
+    // Se não encontrou no localStorage, verifica no sessionStorage
+    const sessionToken = sessionStorage.getItem(TokenUser);
+    if (sessionToken) {
+      try {
+        token = JSON.parse(sessionToken);
+        } catch (error) {
+          sessionStorage.removeItem(TokenUser);
+      }
+    }
+  }
+  
+  // Adiciona o token se existir, independente da origem
   if (token && token?.token) {
       config.headers.Authorization = `Bearer ${token?.token}`;
   }

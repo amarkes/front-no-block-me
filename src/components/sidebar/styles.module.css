@@ -1,0 +1,113 @@
+/* Overlay para mobile */
+.overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  @apply fixed top-0 left-0 h-full w-80 bg-white dark:bg-zinc-800 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out;
+}
+
+.sidebarOpen {
+  @apply translate-x-0;
+}
+
+.sidebarClosed {
+  @apply -translate-x-full lg:translate-x-0;
+}
+
+.sidebarContent {
+  @apply h-full flex flex-col;
+}
+
+/* Header do Sidebar */
+.sidebarHeader {
+  @apply flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700;
+}
+
+.logo {
+  @apply flex items-center space-x-3;
+}
+
+.logoIcon {
+  @apply text-3xl;
+}
+
+.logoText {
+  @apply text-xl font-bold text-gray-800 dark:text-white;
+}
+
+.closeButton {
+  @apply lg:hidden p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200;
+}
+
+/* Navegação */
+.nav {
+  @apply flex-1 p-4 space-y-2;
+}
+
+.menuItem {
+  @apply w-full flex items-center space-x-4 p-4 rounded-xl text-left transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+
+.menuItemActive {
+  @apply bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 border border-purple-200 dark:border-purple-700;
+}
+
+.menuItemIcon {
+  @apply w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg group-hover:scale-110 transition-transform duration-200;
+}
+
+.menuItemActive .menuItemIcon {
+  @apply bg-gradient-to-br from-purple-500 to-blue-500 text-white shadow-lg;
+}
+
+.menuItemContent {
+  @apply flex-1 min-w-0;
+}
+
+.menuItemLabel {
+  @apply block text-sm font-semibold text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200;
+}
+
+.menuItemActive .menuItemLabel {
+  @apply text-purple-700 dark:text-purple-300;
+}
+
+.menuItemDescription {
+  @apply block text-xs text-gray-500 dark:text-gray-400 mt-1;
+}
+
+.menuItemActive .menuItemDescription {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+/* Footer do Sidebar */
+.sidebarFooter {
+  @apply p-6 border-t border-gray-200 dark:border-gray-700;
+}
+
+.footerText {
+  @apply text-center;
+}
+
+.footerTitle {
+  @apply block text-sm font-semibold text-gray-800 dark:text-white;
+}
+
+.footerSubtitle {
+  @apply block text-xs text-gray-500 dark:text-gray-400 mt-1;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .sidebar {
+    @apply w-72;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    @apply w-full max-w-sm;
+  }
+}
