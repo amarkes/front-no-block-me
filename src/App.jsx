@@ -7,6 +7,7 @@ import RegisterPage from '@/pages/register/index';
 import ForgotPasswordPage from '@/pages/forgot/index';
 import HomePage from '@/pages/home/index';
 import AuthContext, { AuthProvider } from '@/context/AuthContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 import { AlertDialogProvider } from '@/components/alert/AlertDialogContext';
 import Sidebar from './components/sidebar';
 import DashboardPage from './pages/dashboard';
@@ -90,12 +91,14 @@ function App() {
 export default function RootApp() {
   return (
     <Router>
-      <AuthProvider>
-        <AlertDialogProvider>
-          <ToastContainer />
-          <App />
-        </AlertDialogProvider>,
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AlertDialogProvider>
+            <ToastContainer />
+            <App />
+          </AlertDialogProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   );
 }

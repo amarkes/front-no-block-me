@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { useTransactions } from '../../hooks/useTransactions';
 import styles from './styles.module.css';
 import HeaderComponent from '../../components/header';
+import { useTheme } from '../../context/ThemeContext';
 
 const ReportsPage = ({ onMenuClick }) => {
   const {
-    transactions,
-    summary,
-    loading
+    transactions
   } = useTransactions();
+  
+  const { isDark } = useTheme();
 
   const [selectedPeriod, setSelectedPeriod] = useState('month');
 
@@ -51,7 +52,7 @@ const ReportsPage = ({ onMenuClick }) => {
   const expenseByCategory = getTransactionsByCategory('expense');
 
   return (
-    <div className={styles.reportsContainer}>
+    <div className={`${styles.reportsContainer} ${isDark ? styles.dark : ''}`}>
       <HeaderComponent onMenuClick={onMenuClick} />
       
       <div className={styles.mainContainer}>
@@ -61,7 +62,7 @@ const ReportsPage = ({ onMenuClick }) => {
             <h1 className={styles.pageTitle}>
               Relatórios Financeiros
             </h1>
-            <p className={styles.pageSubtitle}>
+            <p className={`${styles.pageSubtitle} ${isDark ? styles.dark : ''}`}>
               Análises detalhadas das suas finanças
             </p>
           </div>
@@ -87,7 +88,7 @@ const ReportsPage = ({ onMenuClick }) => {
 
           {/* Resumo geral */}
           <div className={styles.summarySection}>
-            <h2 className={styles.sectionTitle}>Resumo Geral</h2>
+            <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>Resumo Geral</h2>
             <div className={styles.summaryGrid}>
               <div className={styles.summaryCard}>
                 <div className={styles.summaryIcon}>
@@ -131,7 +132,7 @@ const ReportsPage = ({ onMenuClick }) => {
 
           {/* Análise por categoria - Receitas */}
           <div className={styles.categoryAnalysis}>
-            <h2 className={styles.sectionTitle}>Receitas por Categoria</h2>
+            <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>Receitas por Categoria</h2>
             <div className={styles.categoryList}>
               {incomeByCategory.length > 0 ? (
                 incomeByCategory.map((category, index) => (
@@ -165,7 +166,7 @@ const ReportsPage = ({ onMenuClick }) => {
 
           {/* Análise por categoria - Despesas */}
           <div className={styles.categoryAnalysis}>
-            <h2 className={styles.sectionTitle}>Despesas por Categoria</h2>
+            <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>Despesas por Categoria</h2>
             <div className={styles.categoryList}>
               {expenseByCategory.length > 0 ? (
                 expenseByCategory.map((category, index) => (

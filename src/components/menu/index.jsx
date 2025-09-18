@@ -1,44 +1,20 @@
-import { useState, useContext, useEffect } from "react";
-import { Switch } from "@/components/ui/switch";
+import { useState, useContext } from "react";
 import AuthContext from "@/context/AuthContext";
+import ThemeToggle from "@/components/theme-toggle";
+import { useTheme } from "@/context/ThemeContext";
 import styles from './styles.module.css';
-
 
 const MenuComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const { user, logout } = useContext(AuthContext);
-
-    // Verifica se está em dark mode
-    useEffect(() => {
-        const checkDarkMode = () => {
-            setIsDarkMode(document.documentElement.classList.contains('dark'));
-        };
-        
-        checkDarkMode();
-        
-        // Observa mudanças na classe dark
-        const observer = new MutationObserver(checkDarkMode);
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['class']
-        });
-        
-        return () => observer.disconnect();
-    }, []);
-
-    // Alternar o tema
-    const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode);
-        document.documentElement.classList.toggle("dark", !isDarkMode); // Tailwind dark mode
-    };
+    const { isDark } = useTheme();
 
     return (
         <div className={styles.menuContainer}>
             {/* Botão de menu */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`${styles.menuButton} ${isDarkMode ? styles.dark : ''}`}
+                className={styles.menuButton}
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -58,26 +34,22 @@ const MenuComponent = () => {
 
             {/* Menu Dropdown */}
             {isOpen && (
-                <div className={`${styles.menuDropdown} ${isDarkMode ? styles.dark : ''}`}>
+                <div className={`${styles.menuDropdown} ${isDark ? styles.dark : ''}`}>
                     <div className={styles.menuContent}>
-                        <h3 className={`${styles.menuTitle} ${isDarkMode ? styles.dark : ''}`}>
-                            Theme Mode
+                        <h3 className={`${styles.menuTitle} ${isDark ? styles.dark : ''}`}>
+                            Configurações
                         </h3>
+                        
+                        {/* Toggle de tema */}
                         <div className={styles.themeContainer}>
-                            <span className={`${styles.themeLabel} ${isDarkMode ? styles.dark : ''}`}>Light</span>
-                            <label className={styles.themeSwitchContainer}>
-                                <Switch
-                                    checked={isDarkMode}
-                                    onCheckedChange={toggleTheme}
-                                />
-                            </label>
-                            <span className={`${styles.themeLabel} ${isDarkMode ? styles.dark : ''}`}>Dark</span>
+                            <span className={`${styles.themeLabel} ${isDark ? styles.dark : ''}`}>Tema</span>
+                            <ThemeToggle />
                         </div>
                         
                         {/* Botão de logout se usuário estiver logado */}
                         {user && (
                             <>
-                                <div className={`${styles.divider} ${isDarkMode ? styles.dark : ''}`} />
+                                <div className={`${styles.divider} ${isDark ? styles.dark : ''}`} />
                                 <button
                                     onClick={logout}
                                     className={styles.logoutButton}

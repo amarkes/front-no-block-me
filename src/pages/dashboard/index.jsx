@@ -7,6 +7,7 @@ import TransactionList from '../../components/transaction-list';
 import CategoryModal from '../../components/category-modal';
 import TransactionFilters from '../../components/transaction-filters';
 import { useTransactions } from '../../hooks/useTransactions';
+import { useTheme } from '../../context/ThemeContext';
 
 const DashboardPage = ({ onMenuClick }) => {
   const {
@@ -21,6 +22,8 @@ const DashboardPage = ({ onMenuClick }) => {
     markAsUnpaid,
     applyFilters
   } = useTransactions();
+  
+  const { isDark } = useTheme();
 
   const [showForm, setShowForm] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
@@ -88,6 +91,10 @@ const DashboardPage = ({ onMenuClick }) => {
     return categories.filter(cat => cat.type === type);
   };
 
+  // Separar transações por status de pagamento
+  const paidTransactions = transactions.filter(transaction => transaction.is_paid);
+  const unpaidTransactions = transactions.filter(transaction => !transaction.is_paid);
+
   // Abrir modal de categoria
   const handleCreateCategory = (type) => {
     setCategoryModalType(type);
@@ -105,7 +112,7 @@ const DashboardPage = ({ onMenuClick }) => {
   };
 
   return (
-        <div className={styles.dashboardContainer}>
+        <div className={`${styles.dashboardContainer} ${isDark ? styles.dark : ''}`}>
           <HeaderComponent onMenuClick={onMenuClick} />
       
       <div className={styles.mainContainer}>
@@ -115,7 +122,7 @@ const DashboardPage = ({ onMenuClick }) => {
             <h1 className={styles.pageTitle}>
               Controle Financeiro
             </h1>
-            <p className={styles.pageSubtitle}>
+            <p className={`${styles.pageSubtitle} ${isDark ? styles.dark : ''}`}>
               Gerencie suas despesas e receitas de forma simples
             </p>
           </div>
@@ -171,14 +178,48 @@ const DashboardPage = ({ onMenuClick }) => {
             onCreateCategory={handleCreateCategory}
           />
 
-          {/* Lista de transações */}
+          {/* Transações não pagas */}
+          {unpaidTransactions.length > 0 && (
+            <div className={styles.transactionSection}>
+              <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>
+                <span className={styles.sectionIcon}>⏳</span>
+                Pendentes ({unpaidTransactions.length})
+              </h2>
               <TransactionList 
-                transactions={transactions} 
+                transactions={unpaidTransactions} 
                 onDelete={handleDeleteTransaction}
                 onMarkAsPaid={markAsPaid}
                 onMarkAsUnpaid={markAsUnpaid}
                 loading={loading}
               />
+            </div>
+          )}
+
+          {/* Transações pagas */}
+          {paidTransactions.length > 0 && (
+            <div className={styles.transactionSection}>
+              <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>
+                <span className={styles.sectionIcon}>✅</span>
+                Pagas ({paidTransactions.length})
+              </h2>
+              <TransactionList 
+                transactions={paidTransactions} 
+                onDelete={handleDeleteTransaction}
+                onMarkAsPaid={markAsPaid}
+                onMarkAsUnpaid={markAsUnpaid}
+                loading={loading}
+              />
+            </div>
+          )}
+
+          {/* Mensagem quando não há transações */}
+          {transactions.length === 0 && !loading && (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyIcon}>📊</div>
+              <h3 className={isDark ? styles.dark : ''}>Nenhuma transação encontrada</h3>
+              <p className={isDark ? styles.dark : ''}>Comece adicionando sua primeira transação!</p>
+            </div>
+          )}
 
           {/* Modal de categoria */}
           <CategoryModal

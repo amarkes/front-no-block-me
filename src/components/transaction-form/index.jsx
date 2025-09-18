@@ -1,5 +1,5 @@
-import React from 'react';
 import styles from './styles.module.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const TransactionForm = ({ 
   showForm, 
@@ -7,15 +7,16 @@ const TransactionForm = ({
   formData, 
   handleInputChange, 
   handleSubmit,
-  categories = [],
   getCategoriesByType,
   loading = false,
   onCreateCategory
 }) => {
+  const { isDark } = useTheme();
+  
   if (!showForm) return null;
 
   return (
-    <div className={styles.formContainer}>
+    <div className={`${styles.formContainer} ${isDark ? styles.dark : ''}`}>
       <h2 className={styles.formTitle}>
         Nova Transação
       </h2>

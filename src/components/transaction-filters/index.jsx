@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const TransactionFilters = ({ 
   onFilterChange, 
   loading = false 
 }) => {
+  const { isDark } = useTheme();
   const [selectedPeriod, setSelectedPeriod] = useState('all');
   const [customDate, setCustomDate] = useState('');
 
@@ -21,12 +23,13 @@ const TransactionFilters = ({
         startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
         break;
-      case 'week':
+      case 'week': {
         const startOfWeek = new Date(now);
         startOfWeek.setDate(now.getDate() - now.getDay());
         startDate = new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate());
         endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
         break;
+      }
       case 'month':
         startDate = new Date(now.getFullYear(), now.getMonth(), 1);
         endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
@@ -72,8 +75,8 @@ const TransactionFilters = ({
   ];
 
   return (
-    <div className={styles.filtersContainer}>
-      <h3 className={styles.filtersTitle}>Filtros</h3>
+    <div className={`${styles.filtersContainer} ${isDark ? styles.dark : ''}`}>
+      <h3 className={`${styles.filtersTitle} ${isDark ? styles.dark : ''}`}>Filtros</h3>
       
       <div className={styles.filtersGrid}>
         {periods.map((period) => (

@@ -1,17 +1,29 @@
 .transactionsContainer {
-    @apply bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50;
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden;
+}
+
+.transactionsContainer.dark {
+    @apply bg-zinc-800/90 border-gray-700/50;
 }
 
 .transactionsHeader {
-    @apply p-8 border-b border-gray-200/50 dark:border-gray-600/50;
+    @apply p-4 sm:p-8 border-b border-gray-200/50;
+}
+
+.transactionsHeader.dark {
+    @apply border-gray-600/50;
 }
 
 .transactionsTitle {
-    @apply text-2xl font-bold text-gray-800 dark:text-white text-center;
+    @apply text-xl sm:text-2xl font-bold text-gray-800 text-center;
+}
+
+.transactionsTitle.dark {
+    @apply text-white;
 }
 
 .transactionsContent {
-    @apply p-6;
+    @apply p-4 sm:p-6;
 }
 
 .emptyState {
@@ -35,15 +47,15 @@
 }
 
 .transactionItem {
-    @apply flex items-center justify-between p-6 bg-gradient-to-r from-gray-50/80 to-white/80 dark:from-zinc-700/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+    @apply flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-6 bg-gradient-to-r from-gray-50/80 to-white/80 dark:from-zinc-700/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 gap-4;
 }
 
 .transactionLeft {
-    @apply flex items-center space-x-4;
+    @apply flex items-center space-x-3 sm:space-x-4 flex-1;
 }
 
 .transactionIcon {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center shadow-md;
+    @apply w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shadow-md flex-shrink-0;
 }
 
 .transactionIconIncome {
@@ -67,27 +79,27 @@
 }
 
 .transactionInfo {
-    @apply flex-1;
+    @apply flex-1 min-w-0;
 }
 
 .transactionDescription {
-    @apply font-medium text-gray-800 dark:text-white;
+    @apply font-medium text-gray-800 dark:text-white text-sm sm:text-base truncate;
 }
 
 .transactionCategory {
-    @apply text-sm text-gray-500 dark:text-gray-400;
+    @apply text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate;
 }
 
 .transactionRight {
-    @apply text-right flex items-center space-x-4;
+    @apply text-right flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto;
 }
 
 .transactionAmountContainer {
-    @apply flex-1;
+    @apply flex-1 sm:flex-none;
 }
 
 .transactionAmount {
-    @apply font-semibold;
+    @apply font-semibold text-sm sm:text-base;
 }
 
 .transactionAmountIncome {
@@ -99,11 +111,11 @@
 }
 
 .transactionDate {
-    @apply text-sm text-gray-500 dark:text-gray-400;
+    @apply text-xs sm:text-sm text-gray-500 dark:text-gray-400;
 }
 
 .transactionActions {
-    @apply flex flex-col items-end space-y-2;
+    @apply flex flex-row sm:flex-col items-center sm:items-end space-x-2 sm:space-x-0 sm:space-y-2;
 }
 
 .paymentStatus {
@@ -119,17 +131,17 @@
 }
 
 .actionButtons {
-    @apply flex space-x-2;
+    @apply flex space-x-1 sm:space-x-2;
 }
 
 .paidButton {
-    @apply p-2 text-green-500 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 dark:hover:from-green-900/20 dark:hover:to-green-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply p-1.5 sm:p-2 text-green-500 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 dark:hover:from-green-900/20 dark:hover:to-green-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
 }
 
 .unpaidButton {
-    @apply p-2 text-orange-500 hover:text-orange-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-100 dark:hover:from-orange-900/20 dark:hover:to-orange-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply p-1.5 sm:p-2 text-orange-500 hover:text-orange-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-100 dark:hover:from-orange-900/20 dark:hover:to-orange-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
 }
 
 .deleteButton {
-    @apply p-2 text-red-500 hover:text-red-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 dark:hover:from-red-900/20 dark:hover:to-red-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply p-1.5 sm:p-2 text-red-500 hover:text-red-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 dark:hover:from-red-900/20 dark:hover:to-red-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
 }

@@ -1,10 +1,12 @@
-import React from 'react';
 import styles from './styles.module.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const SummaryCards = ({ totalIncome, totalExpenses, balance, loading = false }) => {
+  const { isDark } = useTheme();
+  
   return (
     <div className={styles.cardsGrid}>
-      <div className={styles.summaryCard}>
+      <div className={`${styles.summaryCard} ${isDark ? styles.dark : ''}`}>
         <div className={styles.cardContent}>
                 <div className={styles.cardInfo}>
                   <p className={styles.cardLabel}>Receitas</p>
@@ -20,7 +22,7 @@ const SummaryCards = ({ totalIncome, totalExpenses, balance, loading = false }) 
         </div>
       </div>
 
-      <div className={styles.summaryCard}>
+      <div className={`${styles.summaryCard} ${isDark ? styles.dark : ''}`}>
         <div className={styles.cardContent}>
                 <div className={styles.cardInfo}>
                   <p className={styles.cardLabel}>Despesas</p>
@@ -36,7 +38,7 @@ const SummaryCards = ({ totalIncome, totalExpenses, balance, loading = false }) 
         </div>
       </div>
 
-      <div className={styles.summaryCard}>
+      <div className={`${styles.summaryCard} ${isDark ? styles.dark : ''}`}>
         <div className={styles.cardContent}>
                 <div className={styles.cardInfo}>
                   <p className={styles.cardLabel}>Saldo</p>

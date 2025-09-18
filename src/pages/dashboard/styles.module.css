@@ -1,5 +1,9 @@
 .dashboardContainer {
-    @apply min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-zinc-900 dark:via-zinc-800 dark:to-purple-900;
+    @apply min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50;
+}
+
+.dashboardContainer.dark {
+    @apply from-zinc-900 via-zinc-800 to-purple-900;
 }
 
 .mainContainer {
@@ -19,7 +23,11 @@
 }
 
 .pageSubtitle {
-    @apply text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto;
+    @apply text-lg text-gray-600 max-w-2xl mx-auto;
+}
+
+.pageSubtitle.dark {
+    @apply text-gray-400;
 }
 
 .filtersButtonContainer {
@@ -36,6 +44,48 @@
 
 .addButton {
     @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-lg;
+}
+
+/* Seções de transações */
+.transactionSection {
+    @apply mb-8;
+}
+
+.sectionTitle {
+    @apply flex items-center gap-3 text-2xl font-bold text-gray-800 mb-6;
+}
+
+.sectionTitle.dark {
+    @apply text-gray-200;
+}
+
+.sectionIcon {
+    @apply text-3xl;
+}
+
+/* Estado vazio */
+.emptyState {
+    @apply text-center py-16 px-4;
+}
+
+.emptyIcon {
+    @apply text-6xl mb-4;
+}
+
+.emptyState h3 {
+    @apply text-2xl font-bold text-gray-800 mb-2;
+}
+
+.emptyState h3.dark {
+    @apply text-gray-200;
+}
+
+.emptyState p {
+    @apply text-gray-600 text-lg;
+}
+
+.emptyState p.dark {
+    @apply text-gray-400;
 }
 
 

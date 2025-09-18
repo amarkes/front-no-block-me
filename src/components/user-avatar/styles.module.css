@@ -1,17 +1,17 @@
 .userContainer {
-    @apply flex items-center space-x-2;
+    @apply flex items-center space-x-1 sm:space-x-2;
 }
 
 .avatarImage {
-    @apply w-8 h-8 rounded-full object-cover;
+    @apply w-6 h-6 sm:w-8 sm:h-8 rounded-full object-cover;
 }
 
 .avatarPlaceholder {
-    @apply w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold;
+    @apply w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs sm:text-sm font-semibold;
 }
 
 .displayName {
-    @apply text-gray-700 font-medium;
+    @apply text-gray-700 font-medium text-sm sm:text-base;
 }
 
 .displayName.dark {

@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
+import { useTheme } from '@/context/ThemeContext';
 
 const UserAvatar = ({ user }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Verifica se está em dark mode
-  useEffect(() => {
-    const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains('dark'));
-    };
-    
-    checkDarkMode();
-    
-    // Observa mudanças na classe dark
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-    
-    return () => observer.disconnect();
-  }, []);
+  const { isDark } = useTheme();
 
   if (!user) return null;
 
@@ -56,7 +39,7 @@ const UserAvatar = ({ user }) => {
       )}
       
       {/* Nome */}
-      <span className={`${styles.displayName} ${isDarkMode ? styles.dark : ''}`}>
+      <span className={`${styles.displayName} ${isDark ? styles.dark : ''}`}>
         {getDisplayName()}
       </span>
     </div>

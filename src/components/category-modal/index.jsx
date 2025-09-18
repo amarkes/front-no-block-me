@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const CategoryModal = ({ 
   isOpen, 
@@ -8,6 +9,7 @@ const CategoryModal = ({
   type = 'expense',
   loading = false 
 }) => {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     color: type === 'income' ? '#10B981' : '#EF4444',
@@ -53,9 +55,9 @@ const CategoryModal = ({
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modalContainer}>
+      <div className={`${styles.modalContainer} ${isDark ? styles.dark : ''}`}>
         <div className={styles.modalHeader}>
-          <h3 className={styles.modalTitle}>
+          <h3 className={`${styles.modalTitle} ${isDark ? styles.dark : ''}`}>
             Nova Categoria - {type === 'income' ? 'Receita' : 'Despesa'}
           </h3>
           <button

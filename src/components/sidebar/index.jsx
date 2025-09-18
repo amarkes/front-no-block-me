@@ -1,10 +1,13 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './styles.module.css';
 import packageJson from '../../../package.json';
+import ThemeToggle from '@/components/theme-toggle';
+import { useTheme } from '@/context/ThemeContext';
 
 const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { isDark } = useTheme();
 
   const menuItems = [
     {
@@ -50,7 +53,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       )}
 
       {/* Sidebar */}
-      <div className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : styles.sidebarClosed}`}>
+      <div className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : styles.sidebarClosed} ${isDark ? styles.dark : ''}`}>
         <div className={styles.sidebarContent}>
           {/* Header do Sidebar */}
           <div className={styles.sidebarHeader}>
@@ -96,6 +99,11 @@ const Sidebar = ({ isOpen, onClose }) => {
             <div className={styles.footerText}>
               <span className={styles.footerTitle}>FinanceApp</span>
               <span className={styles.footerSubtitle}>v{packageJson.version}</span>
+            </div>
+            
+            {/* Toggle de tema */}
+            <div className={styles.themeToggleContainer}>
+              <ThemeToggle />
             </div>
           </div>
         </div>

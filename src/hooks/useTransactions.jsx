@@ -293,14 +293,12 @@ export const useTransactions = () => {
         } else {
           const errorMessage = response.error || 'Erro ao marcar transação como paga';
           setError(errorMessage);
-          toast.error(errorMessage);
           throw new Error(errorMessage);
         }
       } catch (err) {
         const errorMessage = err.response?.data?.error || err.message || 'Erro ao marcar transação como paga';
         setError(errorMessage);
-        toast.error(errorMessage);
-        throw new Error(errorMessage);
+        throw err;
       } finally {
         setLoading(false);
       }
@@ -309,7 +307,9 @@ export const useTransactions = () => {
     toast.promise(markAsPaidPromise, {
       pending: 'Marcando como paga...',
       success: 'Transação marcada como paga!',
-      error: 'Erro ao marcar transação como paga. Tente novamente.'
+      error: (err) => {
+        return err.response?.data?.error || err.message || 'Erro ao marcar transação como paga. Tente novamente.';
+      }
     });
 
     return markAsPaidPromise;
@@ -338,14 +338,12 @@ export const useTransactions = () => {
         } else {
           const errorMessage = response.error || 'Erro ao marcar transação como não paga';
           setError(errorMessage);
-          toast.error(errorMessage);
           throw new Error(errorMessage);
         }
       } catch (err) {
         const errorMessage = err.response?.data?.error || err.message || 'Erro ao marcar transação como não paga';
         setError(errorMessage);
-        toast.error(errorMessage);
-        throw new Error(errorMessage);
+        throw err;
       } finally {
         setLoading(false);
       }
@@ -354,7 +352,9 @@ export const useTransactions = () => {
     toast.promise(markAsUnpaidPromise, {
       pending: 'Marcando como não paga...',
       success: 'Transação marcada como não paga!',
-      error: 'Erro ao marcar transação como não paga. Tente novamente.'
+      error: (err) => {
+        return err.response?.data?.error || err.message || 'Erro ao marcar transação como não paga. Tente novamente.';
+      }
     });
 
     return markAsUnpaidPromise;

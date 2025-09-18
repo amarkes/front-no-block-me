@@ -5,7 +5,11 @@
 
 /* Sidebar */
 .sidebar {
-  @apply fixed top-0 left-0 h-full w-80 bg-white dark:bg-zinc-800 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out;
+  @apply fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out;
+}
+
+.sidebar.dark {
+  @apply bg-zinc-800;
 }
 
 .sidebarOpen {
@@ -97,6 +101,10 @@
 
 .footerSubtitle {
   @apply block text-xs text-gray-500 dark:text-gray-400 mt-1;
+}
+
+.themeToggleContainer {
+    @apply mt-4 flex justify-center;
 }
 
 /* Responsividade */

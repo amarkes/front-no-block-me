@@ -3,6 +3,7 @@ import { useTransactions } from '../../hooks/useTransactions';
 import styles from './styles.module.css';
 import HeaderComponent from '../../components/header';
 import CategoryModal from '../../components/category-modal';
+import { useTheme } from '../../context/ThemeContext';
 
 const CategoriesPage = ({ onMenuClick }) => {
   const {
@@ -11,6 +12,8 @@ const CategoriesPage = ({ onMenuClick }) => {
     createCategory,
     deleteCategory
   } = useTransactions();
+  
+  const { isDark } = useTheme();
 
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [categoryModalType, setCategoryModalType] = useState('expense');
@@ -61,7 +64,7 @@ const CategoriesPage = ({ onMenuClick }) => {
   const expenseCategories = getCategoriesByType('expense');
 
   return (
-    <div className={styles.categoriesContainer}>
+    <div className={`${styles.categoriesContainer} ${isDark ? styles.dark : ''}`}>
       <HeaderComponent onMenuClick={onMenuClick} />
       
       <div className={styles.mainContainer}>
@@ -71,7 +74,7 @@ const CategoriesPage = ({ onMenuClick }) => {
             <h1 className={styles.pageTitle}>
               Gerenciar Categorias
             </h1>
-            <p className={styles.pageSubtitle}>
+            <p className={`${styles.pageSubtitle} ${isDark ? styles.dark : ''}`}>
               Organize suas receitas e despesas por categoria
             </p>
           </div>
@@ -96,7 +99,7 @@ const CategoriesPage = ({ onMenuClick }) => {
 
           {/* Categorias de Receita */}
           <div className={styles.categorySection}>
-            <h2 className={styles.sectionTitle}>
+            <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>
               📈 Categorias de Receita
             </h2>
             <div className={styles.categoriesGrid}>
@@ -145,7 +148,7 @@ const CategoriesPage = ({ onMenuClick }) => {
 
           {/* Categorias de Despesa */}
           <div className={styles.categorySection}>
-            <h2 className={styles.sectionTitle}>
+            <h2 className={`${styles.sectionTitle} ${isDark ? styles.dark : ''}`}>
               📉 Categorias de Despesa
             </h2>
             <div className={styles.categoriesGrid}>

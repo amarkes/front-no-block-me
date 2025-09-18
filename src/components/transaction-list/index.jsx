@@ -1,8 +1,11 @@
 import styles from './styles.module.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const TransactionList = ({ transactions, onDelete, onMarkAsPaid, onMarkAsUnpaid, loading = false }) => {
+  const { isDark } = useTheme();
+  
   return (
-    <div className={styles.transactionsContainer}>
+    <div className={`${styles.transactionsContainer} ${isDark ? styles.dark : ''}`}>
       <div className={styles.transactionsHeader}>
         <h2 className={styles.transactionsTitle}>
           Transações Recentes

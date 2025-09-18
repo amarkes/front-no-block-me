@@ -3,23 +3,19 @@
 }
 
 .menuButton {
-    @apply p-2 rounded-full bg-primary shadow hover:bg-primary2-hover;
-}
-
-.menuButton.dark {
-    @apply bg-primary hover:bg-primary2-hover;
+    @apply p-1.5 sm:p-2 rounded-full bg-primary shadow hover:bg-primary2-hover;
 }
 
 .menuIcon {
-    @apply w-6 h-6 text-white;
+    @apply w-4 h-4 sm:w-6 sm:h-6 text-white;
 }
 
 .menuDropdown {
-    @apply absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg border border-primary;
+    @apply absolute top-full right-0 mt-2 w-48 sm:w-56 bg-white shadow-lg rounded-lg border border-primary z-50;
 }
 
 .menuDropdown.dark {
-    @apply bg-gray-800 border-primary;
+    @apply bg-gray-800;
 }
 
 .menuContent {
@@ -39,7 +35,7 @@
 }
 
 .themeLabel {
-    @apply text-gray-600;
+    @apply text-gray-600 text-sm font-medium mr-2;
 }
 
 .themeLabel.dark {

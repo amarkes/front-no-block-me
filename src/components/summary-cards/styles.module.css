@@ -3,7 +3,11 @@
 }
 
 .summaryCard {
-    @apply bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2;
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 relative z-0;
+}
+
+.summaryCard.dark {
+    @apply bg-zinc-800/90 border-gray-700/50;
 }
 
 .cardContent {
@@ -15,7 +19,11 @@
 }
 
 .cardLabel {
-    @apply text-sm font-medium text-gray-600 dark:text-gray-400;
+    @apply text-sm font-medium text-gray-600;
+}
+
+.cardLabel.dark {
+    @apply text-gray-400;
 }
 
 .cardValue {
