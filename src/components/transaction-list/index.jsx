@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import { useTheme } from '../../context/ThemeContext';
 
-const TransactionList = ({ transactions, onDelete, onMarkAsPaid, onMarkAsUnpaid, loading = false }) => {
+const TransactionList = ({ transactions, onDelete, onEdit, onMarkAsPaid, onMarkAsUnpaid, loading = false }) => {
   const { isDark } = useTheme();
   
   return (
@@ -50,6 +50,24 @@ const TransactionList = ({ transactions, onDelete, onMarkAsPaid, onMarkAsUnpaid,
                           <p className={styles.transactionCategory}>
                             {transaction.category ? `${transaction.category.icon} ${transaction.category.name}` : 'Sem categoria'}
                           </p>
+                          
+                          {/* Tags */}
+                          {transaction.tags && transaction.tags.length > 0 && (
+                            <div className={styles.transactionTags}>
+                              {transaction.tags.map((tag, index) => (
+                                <span key={index} className={styles.tag}>
+                                  #{tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          
+                          {/* Notas */}
+                          {transaction.notes && (
+                            <p className={styles.transactionNotes}>
+                              💬 {transaction.notes}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className={styles.transactionRight}>
@@ -75,6 +93,16 @@ const TransactionList = ({ transactions, onDelete, onMarkAsPaid, onMarkAsUnpaid,
                           
                           {/* Botões de ação */}
                           <div className={styles.actionButtons}>
+                            {onEdit && (
+                              <button
+                                onClick={() => onEdit(transaction)}
+                                className={styles.editButton}
+                                title="Editar transação"
+                              >
+                                ✏️
+                              </button>
+                            )}
+                            
                             {transaction.is_paid ? (
                               onMarkAsUnpaid && (
                                 <button

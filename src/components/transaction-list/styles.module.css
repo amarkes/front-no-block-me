@@ -90,6 +90,18 @@
     @apply text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate;
 }
 
+.transactionTags {
+    @apply flex flex-wrap gap-1 mt-2;
+}
+
+.tag {
+    @apply inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.transactionNotes {
+    @apply text-xs text-gray-600 dark:text-gray-300 mt-2 italic line-clamp-2;
+}
+
 .transactionRight {
     @apply text-right flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto;
 }
@@ -140,6 +152,10 @@
 
 .unpaidButton {
     @apply p-1.5 sm:p-2 text-orange-500 hover:text-orange-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-100 dark:hover:from-orange-900/20 dark:hover:to-orange-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.editButton {
+    @apply p-1.5 sm:p-2 text-blue-500 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
 }
 
 .deleteButton {

@@ -144,32 +144,42 @@ export const useTransactions = () => {
 
   // Atualizar transação
   const updateTransaction = useCallback(async (id, transactionData) => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      const response = await transactionService.updateTransaction(id, transactionData);
-      
-      if (response.success) {
-        // Recarregar transações e resumo
-        await Promise.all([
-          loadTransactions(),
-          loadSummary()
-        ]);
+    const updateTransactionPromise = (async () => {
+      try {
+        setLoading(true);
+        setError(null);
         
-        toast.success('Transação atualizada com sucesso!');
-        return response.data;
-      } else {
-        throw new Error(response.error || 'Erro ao atualizar transação');
+        const response = await transactionService.updateTransaction(id, transactionData);
+        
+        if (response.success) {
+          // Recarregar transações e resumo
+          await Promise.all([
+            loadTransactions(),
+            loadSummary()
+          ]);
+          
+          return response.data;
+        } else {
+          throw new Error(response.error || 'Erro ao atualizar transação');
+        }
+      } catch (err) {
+        const errorMessage = err.response?.data?.error || err.message || 'Erro ao atualizar transação';
+        setError(errorMessage);
+        throw err;
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      const errorMessage = err.response?.data?.error || err.message || 'Erro ao atualizar transação';
-      setError(errorMessage);
-      toast.error(errorMessage);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
+    })();
+
+    toast.promise(updateTransactionPromise, {
+      pending: 'Atualizando transação...',
+      success: 'Transação atualizada com sucesso!',
+      error: (err) => {
+        return err.response?.data?.error || err.message || 'Erro ao atualizar transação. Tente novamente.';
+      }
+    });
+
+    return updateTransactionPromise;
   }, [loadTransactions, loadSummary]);
 
   // Deletar transação

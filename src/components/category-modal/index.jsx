@@ -71,7 +71,7 @@ const CategoryModal = ({
 
         <form onSubmit={handleSubmit} className={styles.modalForm}>
           <div className={styles.formGroup}>
-            <label className={styles.formLabel}>
+            <label className={`${styles.formLabel} ${isDark ? styles.dark : ''}`}>
               Nome da Categoria
             </label>
             <input
@@ -79,7 +79,7 @@ const CategoryModal = ({
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className={styles.formInput}
+              className={`${styles.formInput} ${isDark ? styles.dark : ''}`}
               placeholder="Ex: Salário, Alimentação..."
               required
               disabled={loading}
@@ -87,7 +87,7 @@ const CategoryModal = ({
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.formLabel}>
+            <label className={`${styles.formLabel} ${isDark ? styles.dark : ''}`}>
               Cor
             </label>
             <div className={styles.colorGrid}>
@@ -105,7 +105,7 @@ const CategoryModal = ({
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.formLabel}>
+            <label className={`${styles.formLabel} ${isDark ? styles.dark : ''}`}>
               Ícone
             </label>
             <div className={styles.iconGrid}>

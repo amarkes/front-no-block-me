@@ -5,6 +5,7 @@ import SummaryCards from '../../components/summary-cards';
 import TransactionForm from '../../components/transaction-form';
 import TransactionList from '../../components/transaction-list';
 import CategoryModal from '../../components/category-modal';
+import TransactionEditModal from '../../components/transaction-edit-modal';
 import TransactionFilters from '../../components/transaction-filters';
 import { useTransactions } from '../../hooks/useTransactions';
 import { useTheme } from '../../context/ThemeContext';
@@ -16,6 +17,7 @@ const DashboardPage = ({ onMenuClick }) => {
     summary,
     loading,
     createTransaction,
+    updateTransaction,
     deleteTransaction,
     createCategory,
     markAsPaid,
@@ -27,8 +29,10 @@ const DashboardPage = ({ onMenuClick }) => {
 
   const [showForm, setShowForm] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [categoryModalType, setCategoryModalType] = useState('expense');
+  const [editingTransaction, setEditingTransaction] = useState(null);
   const [formData, setFormData] = useState({
     type: 'income',
     description: '',
@@ -111,6 +115,23 @@ const DashboardPage = ({ onMenuClick }) => {
     }
   };
 
+  // Abrir modal de edição
+  const handleEditTransaction = (transaction) => {
+    setEditingTransaction(transaction);
+    setShowEditModal(true);
+  };
+
+  // Editar transação
+  const handleEditTransactionSubmit = async (transactionData) => {
+    try {
+      await updateTransaction(editingTransaction.id, transactionData);
+      setShowEditModal(false);
+      setEditingTransaction(null);
+    } catch {
+      // Error já é tratado no hook
+    }
+  };
+
   return (
         <div className={`${styles.dashboardContainer} ${isDark ? styles.dark : ''}`}>
           <HeaderComponent onMenuClick={onMenuClick} />
@@ -188,6 +209,7 @@ const DashboardPage = ({ onMenuClick }) => {
               <TransactionList 
                 transactions={unpaidTransactions} 
                 onDelete={handleDeleteTransaction}
+                onEdit={handleEditTransaction}
                 onMarkAsPaid={markAsPaid}
                 onMarkAsUnpaid={markAsUnpaid}
                 loading={loading}
@@ -205,6 +227,7 @@ const DashboardPage = ({ onMenuClick }) => {
               <TransactionList 
                 transactions={paidTransactions} 
                 onDelete={handleDeleteTransaction}
+                onEdit={handleEditTransaction}
                 onMarkAsPaid={markAsPaid}
                 onMarkAsUnpaid={markAsUnpaid}
                 loading={loading}
@@ -227,6 +250,19 @@ const DashboardPage = ({ onMenuClick }) => {
             onClose={() => setShowCategoryModal(false)}
             onSubmit={handleCreateCategorySubmit}
             type={categoryModalType}
+            loading={loading}
+          />
+
+          {/* Modal de edição de transação */}
+          <TransactionEditModal
+            isOpen={showEditModal}
+            onClose={() => {
+              setShowEditModal(false);
+              setEditingTransaction(null);
+            }}
+            onSubmit={handleEditTransactionSubmit}
+            transaction={editingTransaction}
+            categories={categories}
             loading={loading}
           />
         </div>

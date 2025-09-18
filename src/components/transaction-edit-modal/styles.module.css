@@ -1,0 +1,201 @@
+/* Modal Overlay */
+.modalOverlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4;
+}
+
+/* Modal Container */
+.modalContainer {
+  @apply bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200;
+}
+
+.modalContainer.dark {
+  @apply bg-zinc-800 border-gray-700;
+}
+
+/* Modal Header */
+.modalHeader {
+  @apply flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-blue-50;
+}
+
+.modalHeader.dark {
+  @apply border-gray-600 bg-gradient-to-r from-purple-900/20 to-blue-900/20;
+}
+
+.modalTitle {
+  @apply text-2xl font-bold text-gray-800 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent;
+}
+
+.modalTitle.dark {
+  @apply bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent;
+}
+
+.closeButton {
+  @apply text-gray-400 hover:text-gray-600 text-xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors;
+}
+
+.closeButton.dark {
+  @apply text-gray-400 hover:text-gray-200 hover:bg-gray-700;
+}
+
+/* Modal Form */
+.modalForm {
+  @apply p-8 space-y-8;
+}
+
+/* Form Groups */
+.formGroup {
+  @apply space-y-2;
+}
+
+/* Grid Layout */
+.formGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.formGridFull {
+  @apply col-span-1 md:col-span-2;
+}
+
+.formLabel {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.formLabel.dark {
+  @apply text-gray-100;
+}
+
+/* Radio Group */
+.radioGroup {
+  @apply flex space-x-6;
+}
+
+.radioLabel {
+  @apply flex items-center space-x-2 cursor-pointer;
+}
+
+.radioText {
+  @apply text-sm text-gray-700;
+}
+
+.radioText.dark {
+  @apply text-gray-100;
+}
+
+.radioLabel input[type="radio"] {
+  @apply w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500;
+}
+
+.radioLabel input[type="radio"]:checked {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.radioLabel.dark input[type="radio"] {
+  @apply border-gray-500 bg-zinc-800;
+}
+
+.radioLabel.dark input[type="radio"]:checked {
+  @apply bg-blue-500 border-blue-500;
+}
+
+/* Form Inputs */
+.formInput {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200;
+}
+
+.formInput.dark {
+  @apply bg-zinc-800 border-gray-500 text-gray-100 placeholder-gray-400 focus:ring-purple-400 focus:border-purple-400;
+}
+
+.formSelect {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200;
+}
+
+.formSelect.dark {
+  @apply bg-zinc-800 border-gray-500 text-gray-100 focus:ring-purple-400 focus:border-purple-400;
+}
+
+.formTextarea {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none transition-all duration-200;
+}
+
+.formTextarea.dark {
+  @apply bg-zinc-800 border-gray-500 text-gray-100 placeholder-gray-400 focus:ring-purple-400 focus:border-purple-400;
+}
+
+/* Checkbox */
+.checkboxLabel {
+  @apply flex items-center space-x-2 cursor-pointer;
+}
+
+.checkboxText {
+  @apply text-sm text-gray-700;
+}
+
+.checkboxText.dark {
+  @apply text-gray-100;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  @apply w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500;
+}
+
+.checkboxLabel input[type="checkbox"]:checked {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.checkboxLabel.dark input[type="checkbox"] {
+  @apply border-gray-500 bg-zinc-800;
+}
+
+.checkboxLabel.dark input[type="checkbox"]:checked {
+  @apply bg-blue-500 border-blue-500;
+}
+
+/* Modal Actions */
+.modalActions {
+  @apply flex justify-end space-x-4 pt-8 border-t border-gray-200 bg-gradient-to-r from-purple-50 to-blue-50 -mx-8 px-8 pb-8;
+}
+
+.modalActions.dark {
+  @apply border-gray-600 bg-gradient-to-r from-purple-900/20 to-blue-900/20;
+}
+
+.cancelButton {
+  @apply px-6 py-3 text-sm font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-xl hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 shadow-sm;
+}
+
+.cancelButton.dark {
+  @apply bg-zinc-700 text-gray-300 border-gray-600 hover:bg-zinc-600 hover:border-gray-500;
+}
+
+.submitButton {
+  @apply px-8 py-3 text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 border border-transparent rounded-xl hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+}
+
+.submitButton.dark {
+  @apply hover:from-purple-500 hover:to-blue-500;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modalContainer {
+    @apply max-w-full mx-2;
+  }
+  
+  .modalForm {
+    @apply p-4 space-y-4;
+  }
+  
+  .radioGroup {
+    @apply flex-col space-x-0 space-y-2;
+  }
+  
+  .modalActions {
+    @apply flex-col space-x-0 space-y-2;
+  }
+  
+  .cancelButton,
+  .submitButton {
+    @apply w-full;
+  }
+}
