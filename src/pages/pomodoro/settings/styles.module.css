@@ -1,0 +1,98 @@
+.settingsContainer {
+    @apply min-h-screen bg-gray-100;
+}
+
+.settingsContainer.dark {
+    @apply bg-zinc-900;
+}
+
+.mainContainer {
+    @apply container mx-auto px-4 py-8;
+}
+
+.contentWrapper {
+    @apply max-w-4xl mx-auto;
+}
+
+.pageHeader {
+    @apply mb-10 text-center;
+}
+
+.pageTitle {
+    @apply text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3;
+}
+
+.pageSubtitle {
+    @apply text-lg text-gray-600 max-w-2xl mx-auto;
+}
+
+.pageSubtitle.dark {
+    @apply text-gray-400;
+}
+
+.settingsForm {
+    @apply space-y-8;
+}
+
+.settingsSection {
+    @apply bg-white dark:bg-zinc-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-8;
+}
+
+.sectionTitle {
+    @apply text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3;
+}
+
+.sectionTitle.dark {
+    @apply text-white;
+}
+
+.settingsGrid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.settingItem {
+    @apply space-y-2;
+}
+
+.settingLabel {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+.settingInput {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200;
+}
+
+.settingHelp {
+    @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+.checkbox {
+    @apply mr-3 accent-purple-600 dark:accent-purple-400;
+}
+
+.actionButtons {
+    @apply flex flex-col sm:flex-row gap-4 justify-center pt-8;
+}
+
+.saveButton {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1;
+}
+
+.resetButton {
+    @apply bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.resetButton.dark {
+    @apply bg-gray-600 hover:bg-gray-700;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .settingsGrid {
+        @apply grid-cols-1;
+    }
+    
+    .actionButtons {
+        @apply flex-col;
+    }
+}

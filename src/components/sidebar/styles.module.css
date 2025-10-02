@@ -5,7 +5,7 @@
 
 /* Sidebar */
 .sidebar {
-  @apply fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out;
+  @apply fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out;
 }
 
 .sidebar.dark {
@@ -26,19 +26,19 @@
 
 /* Header do Sidebar */
 .sidebarHeader {
-  @apply flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700;
+  @apply flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700;
 }
 
 .logo {
-  @apply flex items-center space-x-3;
+  @apply flex items-center space-x-2;
 }
 
 .logoIcon {
-  @apply text-3xl;
+  @apply text-2xl;
 }
 
 .logoText {
-  @apply text-xl font-bold text-gray-800 dark:text-white;
+  @apply text-lg font-bold text-gray-800 dark:text-white;
 }
 
 .closeButton {
@@ -47,19 +47,27 @@
 
 /* Navegação */
 .nav {
-  @apply flex-1 p-4 space-y-2;
+  @apply flex-1 p-3 space-y-1;
+}
+
+.menuGroup {
+  @apply space-y-1;
 }
 
 .menuItem {
-  @apply w-full flex items-center space-x-4 p-4 rounded-xl text-left transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700;
+  @apply w-full flex items-center space-x-3 p-3 rounded-xl text-left transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-transparent;
+}
+
+.menuItemWithSubmenu {
+  @apply justify-between;
 }
 
 .menuItemActive {
-  @apply bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 border border-purple-200 dark:border-purple-700;
+  @apply bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 border-purple-200 dark:border-purple-700;
 }
 
 .menuItemIcon {
-  @apply w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg group-hover:scale-110 transition-transform duration-200;
+  @apply w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-sm group-hover:scale-110 transition-transform duration-200;
 }
 
 .menuItemActive .menuItemIcon {
@@ -86,9 +94,62 @@
   @apply text-purple-600 dark:text-purple-400;
 }
 
+/* Submenu */
+.submenuArrow {
+  @apply text-gray-400 dark:text-gray-500 transition-transform duration-200 text-sm;
+}
+
+.submenuArrowExpanded {
+  @apply transform rotate-180;
+}
+
+.submenu {
+  @apply ml-6 space-y-1 max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.submenuExpanded {
+  @apply max-h-96 pb-2;
+}
+
+.submenuItem {
+  @apply w-full flex items-center space-x-2 p-2 rounded-lg text-left transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-600/50 border border-transparent;
+}
+
+.submenuItemActive {
+  @apply bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-purple-200 dark:border-purple-700;
+}
+
+.submenuItemIcon {
+  @apply w-6 h-6 rounded-md bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-xs group-hover:scale-105 transition-transform duration-200;
+}
+
+.submenuItemActive .submenuItemIcon {
+  @apply bg-gradient-to-br from-purple-500 to-blue-500 text-white shadow-md;
+}
+
+.submenuItemContent {
+  @apply flex-1 min-w-0;
+}
+
+.submenuItemLabel {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200;
+}
+
+.submenuItemActive .submenuItemLabel {
+  @apply text-purple-700 dark:text-purple-300;
+}
+
+.submenuItemDescription {
+  @apply block text-xs text-gray-500 dark:text-gray-400 mt-0.5;
+}
+
+.submenuItemActive .submenuItemDescription {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
 /* Footer do Sidebar */
 .sidebarFooter {
-  @apply p-6 border-t border-gray-200 dark:border-gray-700;
+  @apply p-4 border-t border-gray-200 dark:border-gray-700;
 }
 
 .footerText {

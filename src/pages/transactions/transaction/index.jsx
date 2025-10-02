@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
-import HeaderComponent from '../../components/header';
-import SummaryCards from '../../components/summary-cards';
-import TransactionForm from '../../components/transaction-form';
-import TransactionList from '../../components/transaction-list';
-import CategoryModal from '../../components/category-modal';
-import TransactionEditModal from '../../components/transaction-edit-modal';
-import TransactionFilters from '../../components/transaction-filters';
-import { useTransactions } from '../../hooks/useTransactions';
-import { useTheme } from '../../context/ThemeContext';
 
-const DashboardPage = ({ onMenuClick }) => {
+import SummaryCards from '../../../components/summary-cards';
+import TransactionForm from '../../../components/transaction-form';
+import TransactionList from '../../../components/transaction-list';
+import CategoryModal from '../../../components/category-modal';
+import TransactionEditModal from '../../../components/transaction-edit-modal';
+import TransactionFilters from '../../../components/transaction-filters';
+import { useTransactions } from '../../../hooks/useTransactions';
+import { useTheme } from '../../../context/ThemeContext';
+
+const TransactionPage = ({ onMenuClick }) => {
   const {
     transactions,
     categories,
@@ -24,7 +24,7 @@ const DashboardPage = ({ onMenuClick }) => {
     markAsUnpaid,
     applyFilters
   } = useTransactions();
-  
+
   const { isDark } = useTheme();
 
   const [showForm, setShowForm] = useState(false);
@@ -53,7 +53,7 @@ const DashboardPage = ({ onMenuClick }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const transactionData = {
       ...formData,
       amount: parseFloat(formData.amount),
@@ -63,7 +63,7 @@ const DashboardPage = ({ onMenuClick }) => {
 
     try {
       await createTransaction(transactionData);
-      
+
       // Reset form
       setFormData({
         type: 'income',
@@ -133,9 +133,9 @@ const DashboardPage = ({ onMenuClick }) => {
   };
 
   return (
-        <div className={`${styles.dashboardContainer} ${isDark ? styles.dark : ''}`}>
-          <HeaderComponent onMenuClick={onMenuClick} />
-      
+    <div className={`${styles.dashboardContainer} ${isDark ? styles.dark : ''}`}>
+
+
       <div className={styles.mainContainer}>
         <div className={styles.contentWrapper}>
           {/* Header da página */}
@@ -149,7 +149,7 @@ const DashboardPage = ({ onMenuClick }) => {
           </div>
 
           {/* Cards de resumo */}
-          <SummaryCards 
+          <SummaryCards
             totalIncome={summary.totalIncome}
             totalExpenses={summary.totalExpenses}
             balance={summary.balance}
@@ -169,7 +169,7 @@ const DashboardPage = ({ onMenuClick }) => {
 
           {/* Filtros */}
           {showFilters && (
-            <TransactionFilters 
+            <TransactionFilters
               onFilterChange={applyFilters}
               loading={loading}
             />
@@ -206,8 +206,8 @@ const DashboardPage = ({ onMenuClick }) => {
                 <span className={styles.sectionIcon}>⏳</span>
                 Pendentes ({unpaidTransactions.length})
               </h2>
-              <TransactionList 
-                transactions={unpaidTransactions} 
+              <TransactionList
+                transactions={unpaidTransactions}
                 onDelete={handleDeleteTransaction}
                 onEdit={handleEditTransaction}
                 onMarkAsPaid={markAsPaid}
@@ -224,8 +224,8 @@ const DashboardPage = ({ onMenuClick }) => {
                 <span className={styles.sectionIcon}>✅</span>
                 Pagas ({paidTransactions.length})
               </h2>
-              <TransactionList 
-                transactions={paidTransactions} 
+              <TransactionList
+                transactions={paidTransactions}
                 onDelete={handleDeleteTransaction}
                 onEdit={handleEditTransaction}
                 onMarkAsPaid={markAsPaid}
@@ -271,4 +271,4 @@ const DashboardPage = ({ onMenuClick }) => {
   );
 };
 
-export default DashboardPage;
+export default TransactionPage;

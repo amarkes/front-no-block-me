@@ -1,0 +1,353 @@
+.timerContainer {
+    @apply min-h-screen bg-gray-100;
+}
+
+.timerContainer.dark {
+    @apply bg-zinc-900;
+}
+
+.mainContainer {
+    @apply container mx-auto px-4 py-8;
+}
+
+.contentWrapper {
+    @apply max-w-6xl mx-auto;
+}
+
+.pageHeader {
+    @apply mb-10 text-center;
+}
+
+.pageTitle {
+    @apply text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3;
+}
+
+.pageSubtitle {
+    @apply text-lg text-gray-600 max-w-2xl mx-auto;
+}
+
+.pageSubtitle.dark {
+    @apply text-gray-400;
+}
+
+/* Controles do dia */
+.dayControls {
+    @apply mb-8;
+}
+
+.createDayButton {
+    @apply w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1;
+}
+
+.dayInfo {
+    @apply bg-white dark:bg-zinc-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6;
+}
+
+.dayHeader {
+    @apply flex justify-between items-center mb-4;
+}
+
+.dayTitle {
+    @apply text-xl font-bold text-gray-800 dark:text-white;
+}
+
+.addTaskButton {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+}
+
+.dayProgress {
+    @apply space-y-2;
+}
+
+.progressBar {
+    @apply w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3;
+}
+
+.progressFill {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 h-3 rounded-full transition-all duration-500;
+}
+
+.progressText {
+    @apply text-sm text-gray-600 dark:text-gray-400 text-center;
+}
+
+/* Timer principal */
+.timerSection {
+    @apply mb-8 text-center;
+}
+
+.timerCircle {
+    @apply w-80 h-80 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-800 flex flex-col items-center justify-center shadow-2xl border-4 border-white dark:border-gray-700;
+}
+
+.timerIcon {
+    @apply text-6xl mb-4;
+}
+
+.timerText {
+    @apply text-2xl font-bold text-gray-800 dark:text-white mb-2;
+}
+
+.timerDisplay {
+    @apply text-6xl font-mono font-bold text-gray-800 dark:text-white;
+}
+
+/* Controles do timer */
+.timerControls {
+    @apply flex justify-center gap-4 mb-6;
+}
+
+.startButton {
+    @apply bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.pauseButton {
+    @apply bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.stopButton {
+    @apply bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.resetButton {
+    @apply bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+/* Botões de tipo de timer */
+.timerTypeButtons {
+    @apply flex flex-wrap justify-center gap-4;
+}
+
+.typeButton {
+    @apply px-6 py-3 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-zinc-700 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-zinc-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.typeButton.active {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 text-white border-purple-600 shadow-lg;
+}
+
+/* Seção de tarefas */
+.tasksSection {
+    @apply bg-white dark:bg-zinc-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6;
+}
+
+.tasksTitle {
+    @apply text-2xl font-bold text-gray-800 dark:text-white mb-6;
+}
+
+.tasksList {
+    @apply space-y-4;
+}
+
+.taskItem {
+    @apply flex justify-between items-center p-4 bg-gray-50 dark:bg-zinc-700 rounded-xl border border-gray-200 dark:border-gray-600 transition-all duration-300;
+}
+
+.taskItem.completed {
+    @apply bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700;
+}
+
+.taskInfo {
+    @apply flex-1;
+}
+
+.taskHeader {
+    @apply flex items-center gap-3 mb-2 flex-wrap;
+}
+
+.taskSequence {
+    @apply text-sm font-bold text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded;
+}
+
+.taskType {
+    @apply text-xl;
+}
+
+.taskTypeLabel {
+    @apply text-sm font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 px-2 py-1 rounded;
+}
+
+.taskTitle {
+    @apply text-lg font-semibold text-gray-800 dark:text-white flex-1 min-w-0;
+}
+
+.taskDuration {
+    @apply text-sm text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded;
+}
+
+.taskDescription {
+    @apply text-sm text-gray-600 dark:text-gray-400 ml-8;
+}
+
+.taskActions {
+    @apply ml-4;
+}
+
+.completeButton {
+    @apply bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.completedText {
+    @apply text-green-600 dark:text-green-400 font-medium;
+}
+
+/* Modais */
+.modalOverlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4;
+}
+
+.modal {
+    @apply bg-white dark:bg-zinc-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 w-full max-w-md;
+}
+
+.largeModal {
+    @apply max-w-4xl max-h-[90vh] overflow-y-auto;
+}
+
+.modalTitle {
+    @apply text-xl font-bold text-gray-800 dark:text-white mb-4;
+}
+
+.modalText {
+    @apply text-gray-600 dark:text-gray-400 mb-6;
+}
+
+.modalForm {
+    @apply space-y-4 mb-6;
+}
+
+.modalInput {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200;
+}
+
+.modalTextarea {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none;
+}
+
+.modalSelect {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200;
+}
+
+.modalActions {
+    @apply flex gap-4 justify-end;
+}
+
+.cancelButton {
+    @apply px-6 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200;
+}
+
+.confirmButton {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+}
+
+/* Seções do modal de criação de dia */
+.dayFormSection {
+    @apply mb-6 p-4 bg-gray-50 dark:bg-zinc-700 rounded-xl;
+}
+
+.tasksFormSection {
+    @apply mb-6 p-4 bg-gray-50 dark:bg-zinc-700 rounded-xl;
+}
+
+.tasksListSection {
+    @apply mb-6 p-4 bg-gray-50 dark:bg-zinc-700 rounded-xl;
+}
+
+.sectionTitle {
+    @apply text-lg font-semibold text-gray-800 dark:text-white mb-4;
+}
+
+.formRow {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.formField {
+    @apply space-y-2;
+}
+
+.fieldLabel {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+.addTaskForm {
+    @apply space-y-4;
+}
+
+.addTaskButton {
+    @apply bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.tasksPreview {
+    @apply space-y-2 mb-4;
+}
+
+.taskPreviewItem {
+    @apply flex justify-between items-center p-3 bg-white dark:bg-zinc-600 rounded-lg border border-gray-200 dark:border-gray-500;
+}
+
+.taskPreviewInfo {
+    @apply flex-1;
+}
+
+.taskPreviewTitle {
+    @apply block text-sm font-medium text-gray-800 dark:text-white;
+}
+
+.taskPreviewDescription {
+    @apply block text-xs text-gray-600 dark:text-gray-400 mt-1;
+}
+
+.removeTaskButton {
+    @apply p-1 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors duration-200;
+}
+
+.distributionNote {
+    @apply text-sm text-gray-600 dark:text-gray-400 italic;
+}
+
+.distributionInfo {
+    @apply mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-700;
+}
+
+.distributionInfo.dark {
+    @apply bg-blue-900/20 border-blue-700;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .timerCircle {
+        @apply w-64 h-64;
+    }
+    
+    .timerIcon {
+        @apply text-4xl;
+    }
+    
+    .timerDisplay {
+        @apply text-4xl;
+    }
+    
+    .timerControls {
+        @apply flex-col;
+    }
+    
+    .timerTypeButtons {
+        @apply flex-col;
+    }
+    
+    .dayHeader {
+        @apply flex-col gap-4;
+    }
+    
+    .taskItem {
+        @apply flex-col items-start gap-4;
+    }
+    
+    .taskActions {
+        @apply ml-0 w-full;
+    }
+    
+    .completeButton {
+        @apply w-full;
+    }
+}

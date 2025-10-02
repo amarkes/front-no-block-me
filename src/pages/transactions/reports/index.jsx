@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { useTransactions } from '../../hooks/useTransactions';
+import { useTransactions } from '../../../hooks/useTransactions';
 import styles from './styles.module.css';
-import HeaderComponent from '../../components/header';
-import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 
 const ReportsPage = ({ onMenuClick }) => {
   const {
@@ -53,7 +52,6 @@ const ReportsPage = ({ onMenuClick }) => {
 
   return (
     <div className={`${styles.reportsContainer} ${isDark ? styles.dark : ''}`}>
-      <HeaderComponent onMenuClick={onMenuClick} />
       
       <div className={styles.mainContainer}>
         <div className={styles.contentWrapper}>

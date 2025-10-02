@@ -10,9 +10,13 @@ import AuthContext, { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { AlertDialogProvider } from '@/components/alert/AlertDialogContext';
 import Sidebar from './components/sidebar';
-import DashboardPage from './pages/dashboard';
-import CategoriesPage from './pages/categories';
-import ReportsPage from './pages/reports';
+import TransactionsPage from './pages/transactions/index';
+import TransactionPage from './pages/transactions/transaction/index';
+import CategoriesPage from './pages/transactions/categories/index';
+import ReportsPage from './pages/transactions/reports/index';
+import PomodoroPage from './pages/pomodoro/index';
+import PomodoroTimer from './pages/pomodoro/timer/index';
+import PomodoroSettings from './pages/pomodoro/settings/index';
 import './index.css';
 
 function App() {
@@ -26,18 +30,18 @@ function App() {
         <div className="text-center">
           {/* Spinner animado */}
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mb-4"></div>
-          
+
           {/* Texto de loading */}
           <div className="text-gray-600 dark:text-gray-300">
             <h2 className="text-xl font-semibold mb-2">Carregando...</h2>
             <p className="text-sm">Verificando sua autenticação</p>
           </div>
-          
+
           {/* Pontos animados */}
           <div className="flex justify-center mt-4 space-x-1">
             <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
           </div>
         </div>
       </div>
@@ -56,21 +60,31 @@ function App() {
     <div className="flex h-screen">
       {/* Sidebar */}
       {user && (
-        <Sidebar 
-          isOpen={sidebarOpen} 
-          onClose={() => setSidebarOpen(false)} 
+        <Sidebar
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Conteúdo principal */}
-      <div className={`flex-1 ${user ? 'lg:ml-80' : ''} transition-all duration-300`}>
+      <div className={`flex-1 ${user ? 'lg:ml-64' : ''} transition-all duration-300`}>
         <AnimatePresence mode="wait">
           <Routes>
             {/* Rotas protegidas */}
-            <Route path="/app" element={<ProtectedRoute element={<HomePage />} />} />
-            <Route path="/home" element={<ProtectedRoute element={<DashboardPage onMenuClick={() => setSidebarOpen(true)} />} />} />
-            <Route path="/categories" element={<ProtectedRoute element={<CategoriesPage onMenuClick={() => setSidebarOpen(true)} />} />} />
-            <Route path="/reports" element={<ProtectedRoute element={<ReportsPage onMenuClick={() => setSidebarOpen(true)} />} />} />
+            <Route path="/home" element={<ProtectedRoute element={<HomePage />} />} />
+            <Route path="financial" element={<ProtectedRoute element={<TransactionsPage onMenuClick={() => setSidebarOpen(true)} />} />} >
+              <Route path="transactions" element={<ProtectedRoute element={<TransactionPage onMenuClick={() => setSidebarOpen(true)} />} />} />
+              <Route path="categories" element={<ProtectedRoute element={<CategoriesPage onMenuClick={() => setSidebarOpen(true)} />} />} />
+              <Route path="reports" element={<ProtectedRoute element={<ReportsPage onMenuClick={() => setSidebarOpen(true)} />} />} />
+            </Route>
+
+            <Route path="pomodoro" element={<ProtectedRoute element={<PomodoroPage />} />} >
+              <Route path="timer" element={<ProtectedRoute element={<PomodoroTimer onMenuClick={() => setSidebarOpen(true)} />} />} />
+              <Route path="settings" element={<ProtectedRoute element={<PomodoroSettings onMenuClick={() => setSidebarOpen(true)} />} />} />
+            </Route>
+
+            {/* Redirecionamento padrão para usuários logados */}
+            <Route path="/" element={user ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />} />
 
             {/* Rotas públicas */}
             <Route path="/" element={<PublicRoute element={<HomePage />} />}>
@@ -93,10 +107,11 @@ export default function RootApp() {
     <Router>
       <ThemeProvider>
         <AuthProvider>
-          <AlertDialogProvider>
-            <ToastContainer />
-            <App />
-          </AlertDialogProvider>
+          
+            <AlertDialogProvider>
+              <ToastContainer />
+              <App />
+            </AlertDialogProvider>
         </AuthProvider>
       </ThemeProvider>
     </Router>

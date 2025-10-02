@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       api.get('/auth/me')
         .then(response => {
           setUser(response?.data?.profile);
-          navigate('/home');
+          navigate('/app');
         })
         .catch(() => {
           // Remove token de ambos os storages em caso de erro
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
           }
           
           setUser(data?.data?.profile);
-          navigate('/home');
+          navigate('/app');
           return 'Login realizado com sucesso!';
         },
         autoClose: 3000

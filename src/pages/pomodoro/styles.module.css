@@ -1,0 +1,32 @@
+/* Estilos para a página principal do Pomodoro */
+.pomodoroContainer {
+    @apply min-h-screen bg-gray-100;
+}
+
+.pomodoroContainer.dark {
+    @apply bg-zinc-900;
+}
+
+.mainContainer {
+    @apply container mx-auto px-4 py-8;
+}
+
+.contentWrapper {
+    @apply max-w-6xl mx-auto;
+}
+
+.pageHeader {
+    @apply mb-10 text-center;
+}
+
+.pageTitle {
+    @apply text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3;
+}
+
+.pageSubtitle {
+    @apply text-lg text-gray-600 max-w-2xl mx-auto;
+}
+
+.pageSubtitle.dark {
+    @apply text-gray-400;
+}

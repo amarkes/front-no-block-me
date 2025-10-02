@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useTransactions } from '../../hooks/useTransactions';
+import { useTransactions } from '../../../hooks/useTransactions';
 import styles from './styles.module.css';
-import HeaderComponent from '../../components/header';
-import CategoryModal from '../../components/category-modal';
-import { useTheme } from '../../context/ThemeContext';
+import CategoryModal from '../../../components/category-modal';
+import { useTheme } from '../../../context/ThemeContext';
 
 const CategoriesPage = ({ onMenuClick }) => {
   const {
@@ -65,7 +64,6 @@ const CategoriesPage = ({ onMenuClick }) => {
 
   return (
     <div className={`${styles.categoriesContainer} ${isDark ? styles.dark : ''}`}>
-      <HeaderComponent onMenuClick={onMenuClick} />
       
       <div className={styles.mainContainer}>
         <div className={styles.contentWrapper}>

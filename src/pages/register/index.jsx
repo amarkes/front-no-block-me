@@ -31,7 +31,7 @@ const RegisterPage = ({ setIsLogin }) => {
       <div className={styles.registerCardContainer}>
         <div className={styles.registerCard}>
           <div className={styles.headerText}>
-            <h2 className={styles.title}>Cadastre-se agora mesmo!</h2>
+          <h2 className={[styles.title, `dark:text-white`].join(' ')}>Cadastre-se agora mesmo!</h2>
             <div className={styles.divider}>
               <span className={styles.line}></span>
               <span className={styles.text}>Será um prazer ter você com a gente!</span>
@@ -41,7 +41,7 @@ const RegisterPage = ({ setIsLogin }) => {
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputGroup}>
               <div className={styles.inputWrapper}>
-                <label htmlFor="email" className={[styles.label, `dark:text-white`].join(' ')}>Insira um email válido</label>
+                <label htmlFor="email" className={`${styles.label} text-gray-700 dark:text-gray-200`}>Insira um email válido</label>
                 <input
                   id="email"
                   name="email"
@@ -50,11 +50,11 @@ const RegisterPage = ({ setIsLogin }) => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className={styles.input}
+                  className={`${styles.input} bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600`}
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label htmlFor="gender" className={[styles.label, `dark:text-white`].join(' ')}>
+                <label htmlFor="password" className={`${styles.label} text-gray-700 dark:text-gray-200`}>
                   Insira uma senha
                 </label>
                 <input
@@ -65,11 +65,11 @@ const RegisterPage = ({ setIsLogin }) => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className={styles.input}
+                  className={`${styles.input} bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600`}
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label htmlFor="username" className={[styles.label, `dark:text-white`].join(' ')}>Insira seu nome completo</label>
+                <label htmlFor="username" className={`${styles.label} text-gray-700 dark:text-gray-200`}>Insira seu nome completo</label>
                 <input
                   id="username"
                   name="username"
@@ -78,11 +78,11 @@ const RegisterPage = ({ setIsLogin }) => {
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className={styles.input}
+                  className={`${styles.input} bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600`}
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label htmlFor="acceptTerms" className={[styles.label, `dark:text-white`].join(' ')}>
+                <label htmlFor="acceptTerms" className={`${styles.label} text-gray-700 dark:text-gray-200`}>
                   <input
                     id="acceptTerms"
                     name="acceptTerms"
@@ -90,7 +90,7 @@ const RegisterPage = ({ setIsLogin }) => {
                     required
                     checked={acceptTerms}
                     onChange={(e) => setAcceptTerms(e.target.checked)}
-                    className={styles.checkbox}
+                    className={`${styles.checkbox} accent-blue-600 dark:accent-blue-400`}
                   />
                   Eu aceito os <Dialog>
                     <DialogTrigger asChild>
@@ -98,31 +98,31 @@ const RegisterPage = ({ setIsLogin }) => {
                         termos e condições
                       </button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-lg bg-white">
+                    <DialogContent className="max-w-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
                       <DialogHeader>
-                        <DialogTitle>Termos e Condições</DialogTitle>
+                        <DialogTitle className="text-gray-900 dark:text-white">Termos e Condições</DialogTitle>
                         <DialogDescription />
                         {/* <DialogDescription> */}
-                        <div className={styles.modalContent}>
-                          <h1>Termos de Uso</h1>
+                        <div className={`${styles.modalContent} text-gray-700 dark:text-gray-300`}>
+                          <h1 className="text-gray-900 dark:text-white">Termos de Uso</h1>
 
-                          <h2>1. Aceitação dos Termos</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">1. Aceitação dos Termos</h2>
                           <p>
                             Ao criar uma conta e usar o nosso site, app, ou serviços, você concorda com os Termos de Uso descritos neste documento. Se não concordar com algum dos termos, você não deve usar o Serviço.
                           </p>
                           <br />
-                          <h2>2. Idade Mínima</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">2. Idade Mínima</h2>
                           <p>
                             Você deve ter pelo menos 18 anos para usar este site. Ao criar uma conta, você confirma que tem idade suficiente para acessar o Serviço.
                           </p>
                           <br />
-                          <h2>3. Criação e Uso da Conta</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">3. Criação e Uso da Conta</h2>
                           <ul>
                             <li>Você é responsável por garantir que as informações fornecidas no momento do cadastro sejam verdadeiras, precisas e atualizadas.</li>
                             <li>É proibido criar contas falsas, representar terceiros sem autorização ou criar múltiplas contas.</li>
                           </ul>
                           <br />
-                          <h2>4. Compartilhamento de Dados e Fotos</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">4. Compartilhamento de Dados e Fotos</h2>
                           <ul>
                             <li>
                               Você pode compartilhar dados pessoais e fotos em seu perfil. Ao fazê-lo, você concede a uma licença limitada para exibir essas informações em conformidade com a funcionalidade do Serviço.
@@ -136,15 +136,15 @@ const RegisterPage = ({ setIsLogin }) => {
                             </li>
                           </ul>
                           <br />
-                          <h2>5. Privacidade e Segurança</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">5. Privacidade e Segurança</h2>
                           <p>
                             Nós ultilizamos medidas de segurança para proteger seus dados. No entanto, você reconhece que nenhuma transmissão de dados pela internet é completamente segura, e utiliza o Serviço por sua conta e risco.
                           </p>
                           <p>
-                            Seus dados pessoais serão tratados conforme nossa <a href="#">Política de Privacidade</a>.
+                            Seus dados pessoais serão tratados conforme nossa <a href="#" className="text-blue-600 dark:text-blue-400 hover:underline">Política de Privacidade</a>.
                           </p>
                           <br />
-                          <h2>6. Conduta do Usuário</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">6. Conduta do Usuário</h2>
                           <ul>
                             <li>É proibido usar o Serviço para:
                               <ul>
@@ -156,7 +156,7 @@ const RegisterPage = ({ setIsLogin }) => {
                             <li>Você é exclusivamente responsável pelo conteúdo que compartilha e pelas interações que realiza na plataforma.</li>
                           </ul>
                           <br />
-                          <h2>7. Denúncias e Moderação</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">7. Denúncias e Moderação</h2>
                           <p>
                             Possuimos uma equipe de moderação para revisar denúncias de comportamentos ou conteúdos inadequados.
                           </p>
@@ -164,7 +164,7 @@ const RegisterPage = ({ setIsLogin }) => {
                             Os usuários podem denunciar perfis ou conteúdos que violem os Termos de Uso. Nós reservamos o direito de suspender ou banir usuários que desrespeitem as regras.
                           </p>
                           <br />
-                          <h2>8. Cancelamento e Exclusão de Conta</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">8. Cancelamento e Exclusão de Conta</h2>
                           <p>
                             Você pode cancelar sua conta a qualquer momento. Ao excluir sua conta, seus dados e fotos serão removidos do Serviço, mas podem permanecer armazenados por um período limitado para fins legais ou de backup.
                           </p>
@@ -172,7 +172,7 @@ const RegisterPage = ({ setIsLogin }) => {
                             Nós reservamos o direito de suspender ou excluir contas que violarem os Termos de Uso.
                           </p>
                           <br />
-                          <h2>9. Limitação de Responsabilidade</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">9. Limitação de Responsabilidade</h2>
                           <p>
                             Nós não se responsabiliza por:
                           </p>
@@ -182,12 +182,12 @@ const RegisterPage = ({ setIsLogin }) => {
                             <li>Violação de dados devido a ataques cibernéticos ou falhas técnicas.</li>
                           </ul>
                           <br />
-                          <h2>10. Alterações nos Termos de Uso</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">10. Alterações nos Termos de Uso</h2>
                           <p>
                             Podemos atualizar estes Termos de Uso periodicamente. Você será notificado sobre alterações importantes e deverá revisar os Termos atualizados. O uso contínuo do Serviço após alterações indica a aceitação dos novos Termos.
                           </p>
                           <br />
-                          <h2>11. Contato</h2>
+                          <h2 className="text-gray-800 dark:text-gray-100">11. Contato</h2>
                           <p>
                             Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco.
                           </p>

@@ -1,0 +1,21 @@
+.homeContainer {
+    @apply flex flex-row justify-between items-center h-20 px-6 max-w-[1200px] mx-auto w-full;
+}
+.homeButtons {
+    @apply flex flex-row gap-5 justify-center items-center;   
+}
+.homeButtons2 {
+    @apply flex flex-row gap-3 justify-center items-center;   
+}
+.homeSignButtons {
+    @apply font-sans font-bold;
+}
+.homeSignUpButtons {
+    @apply bg-primary2 px-8 py-2 rounded-[40px] hover:bg-primary2-hover text-white;
+}
+.homeSignInButtons {
+    @apply px-8 py-2 rounded-[40px] hover:bg-primary2-hover hover:text-white;
+}
+.homeDivider {
+    @apply border-l border-gray-300 h-full min-h-[48px];
+}
