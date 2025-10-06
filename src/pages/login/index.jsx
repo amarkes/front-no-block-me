@@ -65,7 +65,7 @@ const LoginPage = () => {
                 />
                 Remember
               </label>
-              <button onClick={() => navigate('/forgot-password')} className={styles.forgotPassword}>Forgot Password</button>
+              <button type="button" onClick={() => navigate('/forgot-password')} className={styles.forgotPassword}>Forgot Password</button>
             </div>
             <button
               type="submit"

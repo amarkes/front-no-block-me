@@ -71,14 +71,14 @@ function App() {
         <AnimatePresence mode="wait">
           <Routes>
             {/* Rotas protegidas */}
-            <Route path="/home" element={<ProtectedRoute element={<HomePage />} />} />
+            <Route path="/home" element={<ProtectedRoute element={<HomePage onMenuClick={() => setSidebarOpen(true)} />} />} />
             <Route path="financial" element={<ProtectedRoute element={<TransactionsPage onMenuClick={() => setSidebarOpen(true)} />} />} >
               <Route path="transactions" element={<ProtectedRoute element={<TransactionPage onMenuClick={() => setSidebarOpen(true)} />} />} />
               <Route path="categories" element={<ProtectedRoute element={<CategoriesPage onMenuClick={() => setSidebarOpen(true)} />} />} />
               <Route path="reports" element={<ProtectedRoute element={<ReportsPage onMenuClick={() => setSidebarOpen(true)} />} />} />
             </Route>
 
-            <Route path="pomodoro" element={<ProtectedRoute element={<PomodoroPage />} />} >
+            <Route path="pomodoro" element={<ProtectedRoute element={<PomodoroPage onMenuClick={() => setSidebarOpen(true)} />} />} >
               <Route path="timer" element={<ProtectedRoute element={<PomodoroTimer onMenuClick={() => setSidebarOpen(true)} />} />} />
               <Route path="settings" element={<ProtectedRoute element={<PomodoroSettings onMenuClick={() => setSidebarOpen(true)} />} />} />
             </Route>

@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 import HeaderComponent from '../../components/header';
 import { PomodoroProvider } from '../../context/PomodoroContext';
 
-const PomodoroPage = () => {
+const PomodoroPage = ({ onMenuClick }) => {
   return (
     <PomodoroProvider>
       <div className={`${styles.pomodoroContainer} dark:bg-zinc-900`}>
-        <HeaderComponent />
+        <HeaderComponent onMenuClick={onMenuClick} />
         <Outlet />
       </div>
     </PomodoroProvider>

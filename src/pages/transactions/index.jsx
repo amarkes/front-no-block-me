@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 import HeaderComponent from '../../components/header';
 import { TransactionsProvider } from '../../context/TransactionsContext';
 
-const TransactionsPage = () => {
+const TransactionsPage = ({ onMenuClick }) => {
   return (
     <TransactionsProvider>
       <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-zinc-900">
-        <HeaderComponent />
+        <HeaderComponent onMenuClick={onMenuClick} />
         <Outlet />
       </div>
     </TransactionsProvider>
