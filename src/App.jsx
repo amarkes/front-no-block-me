@@ -84,7 +84,7 @@ function App() {
             </Route>
 
             {/* Redirecionamento padrão para usuários logados */}
-            <Route path="/" element={user ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />} />
+            <Route path="/" element={user ? <Navigate to="/financial/transactions" replace /> : <Navigate to="/login" replace />} />
 
             {/* Rotas públicas */}
             <Route path="/" element={<PublicRoute element={<HomePage />} />}>
