@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
           }
           
           setUser(data?.data?.profile);
-          navigate('/app');
+          navigate('/financial/transactions');
           return 'Login realizado com sucesso!';
         },
         autoClose: 3000

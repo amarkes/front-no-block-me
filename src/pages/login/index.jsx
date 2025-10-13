@@ -11,8 +11,7 @@ const LoginPage = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     login(email, password, remember);
   };
 
@@ -28,7 +27,7 @@ const LoginPage = () => {
             <span className={styles.line}></span>
           </div>
 
-          <form onSubmit={handleSubmit}>
+
             <div className={styles.formGroup}>
               <label htmlFor="email" className={[styles.label, `dark:text-white`].join(' ')}>Email</label>
               <input
@@ -50,6 +49,12 @@ const LoginPage = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSubmit();
+                  }
+                }}
                 type="password"
                 id="password"
                 className={styles.input}
@@ -65,15 +70,15 @@ const LoginPage = () => {
                 />
                 Remember
               </label>
-              <button type="button" onClick={() => navigate('/forgot-password')} className={styles.forgotPassword}>Forgot Password</button>
+              <button onClick={() => navigate('/forgot-password')} className={styles.forgotPassword}>Forgot Password</button>
             </div>
             <button
-              type="submit"
+              onClick={() => handleSubmit()}
               className={styles.submitButton}
             >
               Continue
             </button>
-          </form>
+
         </div>
 
         <div className={styles.loginIllustration}>
